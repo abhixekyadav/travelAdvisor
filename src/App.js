@@ -44,7 +44,6 @@ const App = () => {
       );
 
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-        console.log({ data });
         setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
         setFilteredPlaces([]);
         setRating("");
@@ -56,6 +55,7 @@ const App = () => {
   const onLoad = (autoC) => setAutocomplete(autoC);
 
   const onPlaceChanged = () => {
+    console.log("autocomplete", autocomplete.getPlace());
     const lat = autocomplete.getPlace().geometry.location.lat();
     const lng = autocomplete.getPlace().geometry.location.lng();
 
